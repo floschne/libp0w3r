@@ -38,3 +38,13 @@ TEST(disjointSetTests, NodeTestOneParameterCtor) {
     ASSERT_EQ(n2._data, n2_data);
     ASSERT_EQ(n2._rank, 0);
 }
+
+TEST(disjointSetTests, NodeTestOneParameterMoveCtor) {
+
+    int n2_data{1337};
+    disjoint_set<int>::Node n2(std::move(n2_data));
+
+    ASSERT_EQ(n2._parent, &n2);
+    ASSERT_EQ(n2._data, n2_data);
+    ASSERT_EQ(n2._rank, 0);
+}
