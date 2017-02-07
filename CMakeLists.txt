@@ -20,7 +20,7 @@ set(THIRD_PARTY_LIBS "")
 set(THIRD_PARTY_LIBS "gtest" ${THIRD_PARTY_LIBS})
 
 set(libp0w3r_SRCS
-
+	src/datastructures/disjoint_set/disjoint_set.cpp
 )
 
 # create library
