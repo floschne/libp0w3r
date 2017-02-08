@@ -64,3 +64,21 @@ TEST(disjointSetTests, NodeTestTwoParameterMoveCtor) {
     ASSERT_EQ(n2._data, n2_data);
     ASSERT_EQ(n2._rank, 0);
 }
+
+TEST(disjointSetTests, NodeTestOutputOperator) {
+
+    int n1_data{1337};
+    disjoint_set<int>::Node n1(n1_data);
+
+    ASSERT_EQ(n1._parent, &n1);
+    ASSERT_EQ(n1._data, n1_data);
+    ASSERT_EQ(n1._rank, 0);
+
+    std::ostringstream oss;
+
+    oss << n1;
+
+    std::string res{oss.str()};
+
+    ASSERT_EQ(std::stoi(res), n1_data);
+}
