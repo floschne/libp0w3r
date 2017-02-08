@@ -26,6 +26,16 @@ namespace libp0w3r {
             Node(const Node&& n) = delete;
             void operator=(const Node& n) = delete;
             void operator=(const Node&& n) = delete;
+
+            /*
+             * inline friend function ->
+             * When the compiler finds the friend declaration within the template class,
+             * it not only finds the declaration but also the implementation and adds both to the enclosing scope.
+             */
+            friend std::ostream& operator<<(std::ostream& os, const Node& n) {
+                os << n._data;
+                return os;
+            }
         };
     };
 
