@@ -83,3 +83,25 @@ TEST(disjointSetTests, NodeTestOutputOperator) {
 
     ASSERT_EQ(std::stoi(res), n1_data);
 }
+
+TEST(disjointSetTests, NodeTestSetters) {
+
+    int n1_data{1337};
+    disjoint_set<int>::Node n1(n1_data);
+
+    ASSERT_EQ(n1.getParent().get(), nullptr);
+    ASSERT_EQ(n1.getData(), n1_data);
+    ASSERT_EQ(n1.getRank(), 0);
+
+    n1.setData(n1_data - 1);
+    ASSERT_EQ(n1.getData(), n1_data-1);
+
+    auto n2Ptr = std::make_shared<disjoint_set<int>::Node>(std::move(n1_data));
+    n1.setParent(n2Ptr);
+    ASSERT_EQ(n1.getParent(), n2Ptr);
+
+    ASSERT_THROW(n1.setParent(nullptr), IllegalNullptrAssignmentException);
+
+    n1.setRank(n1_data);
+    ASSERT_EQ(n1.getRank(), n1_data);
+}
