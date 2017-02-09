@@ -6,63 +6,64 @@ using namespace libp0w3r;
 
 TEST(disjointSetTests, NodeTestStandardCtor) {
 
-    disjoint_set<int>::Node n;
+    auto n1Ptr = std::make_shared<disjoint_set<int>::Node>();
 
-    ASSERT_EQ(n._parent, &n);
-    ASSERT_EQ(n._data, 0);
-    ASSERT_EQ(n._rank, 0);
+    ASSERT_EQ(n1Ptr->_parent.get(), nullptr);
+    ASSERT_EQ(n1Ptr->_data, 0);
+    ASSERT_EQ(n1Ptr->_rank, 0);
 }
 
 TEST(disjointSetTests, NodeTestTwoParameterCtor) {
 
-    disjoint_set<int>::Node n1;
+    auto n1Ptr = std::make_shared<disjoint_set<int>::Node>();
 
-    ASSERT_EQ(n1._parent, &n1);
-    ASSERT_EQ(n1._data, 0);
-    ASSERT_EQ(n1._rank, 0);
+    ASSERT_EQ(n1Ptr->_parent.get(), nullptr);
+    ASSERT_EQ(n1Ptr->_data, 0);
+    ASSERT_EQ(n1Ptr->_rank, 0);
 
     int n2_data{1337};
-    disjoint_set<int>::Node n2(n2_data, &n1);
+    auto n2Ptr = std::make_shared<disjoint_set<int>::Node>(n2_data, n1Ptr);
 
-    ASSERT_EQ(n2._parent, &n1);
-    ASSERT_EQ(n2._data, n2_data);
-    ASSERT_EQ(n1._rank, 0);
+    ASSERT_EQ(n2Ptr->_parent, n1Ptr);
+    ASSERT_EQ(n2Ptr->_data, n2_data);
+    ASSERT_EQ(n2Ptr->_rank, 0);
 }
 
 TEST(disjointSetTests, NodeTestOneParameterCtor) {
 
     int n2_data{1337};
-    disjoint_set<int>::Node n2(n2_data);
+    auto n2Ptr = std::make_shared<disjoint_set<int>::Node>(n2_data);
 
-    ASSERT_EQ(n2._parent, &n2);
-    ASSERT_EQ(n2._data, n2_data);
-    ASSERT_EQ(n2._rank, 0);
+    ASSERT_EQ(n2Ptr->_parent.get(), nullptr);
+    ASSERT_EQ(n2Ptr->_data, n2_data);
+    ASSERT_EQ(n2Ptr->_rank, 0);
 }
 
 TEST(disjointSetTests, NodeTestOneParameterMoveCtor) {
 
     int n2_data{1337};
-    disjoint_set<int>::Node n2(std::move(n2_data));
+    auto n2Ptr = std::make_shared<disjoint_set<int>::Node>(std::move(n2_data));
 
-    ASSERT_EQ(n2._parent, &n2);
-    ASSERT_EQ(n2._data, n2_data);
-    ASSERT_EQ(n2._rank, 0);
+    ASSERT_EQ(n2Ptr->_parent.get(), nullptr);
+    ASSERT_EQ(n2Ptr->_data, n2_data);
+    ASSERT_EQ(n2Ptr->_rank, 0);
 }
 
 TEST(disjointSetTests, NodeTestTwoParameterMoveCtor) {
 
-    disjoint_set<int>::Node n1;
 
-    ASSERT_EQ(n1._parent, &n1);
-    ASSERT_EQ(n1._data, 0);
-    ASSERT_EQ(n1._rank, 0);
+    auto n1Ptr = std::make_shared<disjoint_set<int>::Node>();
+
+    ASSERT_EQ(n1Ptr->_parent.get(), nullptr);
+    ASSERT_EQ(n1Ptr->_data, 0);
+    ASSERT_EQ(n1Ptr->_rank, 0);
 
     int n2_data{1337};
-    disjoint_set<int>::Node n2(std::move(n2_data), &n1);
+    auto n2Ptr = std::make_shared<disjoint_set<int>::Node>(std::move(n2_data), std::move(n1Ptr));
 
-    ASSERT_EQ(n2._parent, &n1);
-    ASSERT_EQ(n2._data, n2_data);
-    ASSERT_EQ(n2._rank, 0);
+    ASSERT_EQ(n2Ptr->_parent, n1Ptr);
+    ASSERT_EQ(n2Ptr->_data, n2_data);
+    ASSERT_EQ(n2Ptr->_rank, 0);
 }
 
 TEST(disjointSetTests, NodeTestOutputOperator) {
@@ -70,7 +71,7 @@ TEST(disjointSetTests, NodeTestOutputOperator) {
     int n1_data{1337};
     disjoint_set<int>::Node n1(n1_data);
 
-    ASSERT_EQ(n1._parent, &n1);
+    ASSERT_EQ(n1._parent.get(), nullptr);
     ASSERT_EQ(n1._data, n1_data);
     ASSERT_EQ(n1._rank, 0);
 

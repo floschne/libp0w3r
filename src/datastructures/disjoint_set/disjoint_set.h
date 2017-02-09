@@ -2,6 +2,7 @@
 #define LIBP0W3R_DISJOINT_SET_H
 
 #include <ostream>
+#include <memory>
 
 namespace libp0w3r {
 
@@ -10,17 +11,17 @@ namespace libp0w3r {
 
     public:
 
-
         struct Node final{
             T _data;
-            Node* _parent;
+            std::shared_ptr<Node> _parent;
             int _rank;
 
-            Node() : _data(), _parent(this), _rank(0) {}
-            Node(const T& data) : _data(data), _parent(this), _rank(0) {}
-            Node(const T&& data) : _data(data), _parent(this), _rank(0) {}
-            Node(const T& data, Node* p) : _data(data), _parent(p), _rank(0) {}
-            Node(const T&& data, Node* p) : _data(data), _parent(p), _rank(0) {}
+            //nullptr indicates that the node instance is a root node!
+            Node() : _data(), _parent(nullptr), _rank(0) {}
+            Node(const T& data) : _data(data), _parent(nullptr), _rank(0) {}
+            Node(const T&& data) : _data(data), _parent(nullptr), _rank(0) {}
+            Node(const T& data, std::shared_ptr<Node> p) : _data(data), _parent(p), _rank(0) {}
+            Node(const T&& data,  std::shared_ptr<Node>&& p) : _data(data), _parent(p), _rank(0) {}
 
             Node(const Node& n) = delete;
             Node(const Node&& n) = delete;
