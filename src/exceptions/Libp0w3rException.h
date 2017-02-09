@@ -22,6 +22,13 @@ namespace libp0w3r {
         }
     };
 
+    class IllegalNullptrAssignmentException : public Libp0w3rException {
+    public:
+        IllegalNullptrAssignmentException(const std::string& msg) {
+            _msgBuffer << "=> IllegalNullptrAssignmentException" << std::endl << msg;
+            _msg = _msgBuffer.str();
+        }
+    };
 }
 
 #endif //LIBP0W3R_LIBP0W3REXCEPTION_H
