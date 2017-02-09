@@ -67,12 +67,17 @@ if(ENABLE_TESTS)
 	set(THIRD_PARTY_LIBS "googletest" "pthread" ${THIRD_PARTY_LIBS})
 	###
 
+    set(exception_TEST_FILES
+        test/exceptions/ExceptionTest.h
+    )
+
 	set(disjoint_set_TEST_FILES
 	    test/datastructures/disjoint_set/NodeTest.h
 	)
 
 	set(TEST_SOURCE_FILES
 	    ${disjoint_set_TEST_FILES}
+        ${exception_TEST_FILES}
 	    test/main.cpp
 	)
 
