@@ -26,7 +26,12 @@ link_directories(/usr/local/lib/ /usr/lib/ /usr/lib/x86_64-linux-gnu/)
 #variable that contains third party libs that will be linkt to the project
 set(THIRD_PARTY_LIBS "")
 
+set(libp0w3rException_SRCS
+    src/exceptions/Libp0w3rException.h
+)
+
 set(libp0w3r_SRCS
+    ${libp0w3rException_SRCS}
 	src/datastructures/disjoint_set/disjoint_set.cpp
 )
 
