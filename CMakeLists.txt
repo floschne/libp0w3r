@@ -26,6 +26,8 @@ link_directories(/usr/local/lib/ /usr/lib/ /usr/lib/x86_64-linux-gnu/)
 #variable that contains third party libs that will be linkt to the project
 set(THIRD_PARTY_LIBS "")
 
+set(THIRD_PARTY_LIBS ${THIRD_PARTY_LIBS} "stdc++")
+
 set(libp0w3rException_SRCS
     src/exceptions/Libp0w3rException.h
 )
