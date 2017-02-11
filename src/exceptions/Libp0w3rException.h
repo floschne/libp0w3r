@@ -8,13 +8,11 @@ namespace libp0w3r {
 
     class Libp0w3rException : public std::exception {
     protected:
-        std::stringstream _msgBuffer;
         std::string _msg;
 
     public:
         Libp0w3rException() {
-            _msgBuffer << "libp0w3r Exception thrown!" << std::endl;
-            _msg = _msgBuffer.str();
+            _msg.append("libp0w3r Exception thrown!\n");
         }
 
         virtual const char* what() const noexcept override {
@@ -25,8 +23,8 @@ namespace libp0w3r {
     class IllegalNullptrAssignmentException : public Libp0w3rException {
     public:
         IllegalNullptrAssignmentException(const std::string& msg) {
-            _msgBuffer << "=> IllegalNullptrAssignmentException" << std::endl << msg;
-            _msg = _msgBuffer.str();
+            _msg.append("=> IllegalNullptrAssignmentException\n");
+            _msg.append(msg);
         }
     };
 }
