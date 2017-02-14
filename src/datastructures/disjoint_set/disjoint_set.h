@@ -57,6 +57,10 @@ namespace libp0w3r {
                 _rank = rank;
             }
 
+            inline bool isSetRepresantive() {
+                return _parent == nullptr;
+            }
+
             /*
              * inline friend function ->
              * When the compiler finds the friend declaration within the template class,
