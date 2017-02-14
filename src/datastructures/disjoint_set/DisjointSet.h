@@ -3,6 +3,7 @@
 
 #include <ostream>
 #include <memory>
+#include <vector>
 #include "../../exceptions/Libp0w3rException.h"
 
 namespace libp0w3r {
@@ -95,6 +96,9 @@ namespace libp0w3r {
                 return !(rhs == lhs);
             }
         };
+
+    private:
+        std::vector<std::unique_ptr<Node>> _sets;
 
     };
 }
