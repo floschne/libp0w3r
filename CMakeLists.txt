@@ -34,7 +34,7 @@ set(libp0w3rException_SRCS
 
 set(libp0w3r_SRCS
     ${libp0w3rException_SRCS}
-	src/datastructures/disjoint_set/disjoint_set.cpp
+        src/datastructures/disjoint_set/DisjointSet.cpp
 )
 
 # create library

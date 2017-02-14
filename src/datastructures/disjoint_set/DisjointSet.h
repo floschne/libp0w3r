@@ -8,7 +8,7 @@
 namespace libp0w3r {
 
     template <class T>
-    class disjoint_set {
+    class DisjointSet {
 
     public:
 
@@ -46,7 +46,7 @@ namespace libp0w3r {
                 if(parent)
                     _parent = parent;
                 else
-                    throw IllegalNullptrAssignmentException("disjoint_set::Node::setParent( nullptr )");
+                    throw IllegalNullptrAssignmentException("DisjointSet::Node::setParent( nullptr )");
             }
 
             inline int getRank() const {
@@ -79,7 +79,7 @@ namespace libp0w3r {
                 return !this->operator==(rhs);
             }
         };
-    };
 
+    };
 }
 #endif //LIBP0W3R_DISJOINT_SET_H
