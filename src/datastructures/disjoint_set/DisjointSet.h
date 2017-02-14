@@ -86,6 +86,11 @@ namespace libp0w3r {
             inline bool operator!=(const Node& rhs) const {
                 return !this->operator==(rhs);
             }
+
+            inline bool operator!=(const T& rhs) const {
+                return !this->operator==(rhs);
+            }
+
         };
 
     };
