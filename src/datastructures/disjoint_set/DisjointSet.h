@@ -75,6 +75,10 @@ namespace libp0w3r {
                 return this->_data == rhs._data;
             }
 
+            inline bool operator==(const T& rhs) const {
+                return this->_data == rhs;
+            }
+
             inline bool operator!=(const Node& rhs) const {
                 return !this->operator==(rhs);
             }
