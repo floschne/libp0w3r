@@ -91,6 +91,9 @@ namespace libp0w3r {
                 return !this->operator==(rhs);
             }
 
+            inline friend bool operator!=(const T& lhs, const Node& rhs) {
+                return !(rhs == lhs);
+            }
         };
 
     };
