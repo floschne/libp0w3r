@@ -100,6 +100,10 @@ namespace libp0w3r {
     private:
         std::vector<std::unique_ptr<Node>> _sets;
 
+        inline bool isEmpty() const {
+            return _sets.empty();
+        }
+
     };
 }
 #endif //LIBP0W3R_DISJOINT_SET_H
